@@ -1,0 +1,225 @@
+//////////////////////////////////////////////////////////////////////////
+//                                                                      //
+// This is a generated file. You can view the original                  //
+// source in your browser if your browser supports source maps.         //
+//                                                                      //
+// If you are using Chrome, open the Developer Tools and click the gear //
+// icon in its lower right corner. In the General Settings panel, turn  //
+// on 'Enable source maps'.                                             //
+//                                                                      //
+// If you are using Firefox 23, go to `about:config` and set the        //
+// `devtools.debugger.source-maps-enabled` preference to true.          //
+// (The preference should be on by default in Firefox 24; versions      //
+// older than 23 do not support source maps.)                           //
+//                                                                      //
+//////////////////////////////////////////////////////////////////////////
+
+
+(function () {
+
+/* Imports */
+var Meteor = Package.meteor.Meteor;
+var _ = Package.underscore._;
+var Template = Package.templating.Template;
+var $ = Package.jquery.$;
+var jQuery = Package.jquery.jQuery;
+var Blaze = Package.blaze.Blaze;
+var UI = Package.blaze.UI;
+var Handlebars = Package.blaze.Handlebars;
+var HTML = Package.htmljs.HTML;
+
+(function () {
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                             //
+// packages/frozeman:animation-helper/template.animation-helper.js                                             //
+//                                                                                                             //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                               //
+                                                                                                               // 1
+Template.__checkName("Animate");                                                                               // 2
+Template["Animate"] = new Template("Template.Animate", (function() {                                           // 3
+  var view = this;                                                                                             // 4
+  return Blaze._InOuterTemplateScope(view, function() {                                                        // 5
+    return Spacebars.include(function() {                                                                      // 6
+      return Spacebars.call(view.templateContentBlock);                                                        // 7
+    });                                                                                                        // 8
+  });                                                                                                          // 9
+}));                                                                                                           // 10
+                                                                                                               // 11
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}).call(this);
+
+
+
+
+
+
+(function () {
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                             //
+// packages/frozeman:animation-helper/animation-helper.js                                                      //
+//                                                                                                             //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                               //
+/**                                                                                                            // 1
+Aniamtion-Helper                                                                                               // 2
+                                                                                                               // 3
+@module package animation-helper                                                                               // 4
+**/                                                                                                            // 5
+                                                                                                               // 6
+                                                                                                               // 7
+/**                                                                                                            // 8
+Check if the animation element has a animation set                                                             // 9
+                                                                                                               // 10
+@method checkForError                                                                                          // 11
+@return {Boolean} true, when an error was detected                                                             // 12
+*/                                                                                                             // 13
+var checkForError = function($node){                                                                           // 14
+                                                                                                               // 15
+    if($node.css('transition') === 'all 0s ease 0s' && $node.css('animation') === 'none 0s ease 0s 1 normal none running') {
+        console.warn('animation-helper error: The following element has no transition defined, but an "animate" class:', $node[0]);
+        return true;                                                                                           // 18
+    } else                                                                                                     // 19
+        return false;                                                                                          // 20
+};                                                                                                             // 21
+                                                                                                               // 22
+                                                                                                               // 23
+Template['Animate'].rendered = function(){                                                                     // 24
+    var template = this;                                                                                       // 25
+    // template._animation_helper_animationElements = this.findAll('.animate');                                // 26
+                                                                                                               // 27
+                                                                                                               // 28
+    // HACK: initial animation rendered, as insertElement, doesn't fire as the rendered callback happended after the first insert
+    _.each(this.findAll('.animate'), function(item){                                                           // 30
+        var $item = $(item);                                                                                   // 31
+                                                                                                               // 32
+        // check if the element has a transition                                                               // 33
+        if(checkForError($item))                                                                               // 34
+            return;                                                                                            // 35
+                                                                                                               // 36
+        $item.width(); // force-draw before animation                                                          // 37
+        $item.removeClass('animate');                                                                          // 38
+                                                                                                               // 39
+        // console.log('rendered', item, item._animation_helper_isVisible);                                    // 40
+                                                                                                               // 41
+        $item.on('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd transitionEnd msTransitionEnd animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd animationEnd msAnimationEnd', function(e) {
+            if (e.target === item) {                                                                           // 43
+                $item.off(e);                                                                                  // 44
+                item._animation_helper_isVisible = true;                                                       // 45
+            }                                                                                                  // 46
+        });                                                                                                    // 47
+    });                                                                                                        // 48
+                                                                                                               // 49
+                                                                                                               // 50
+    // add the parentNode te the instance, so we can access it in the destroyed function                       // 51
+    template._animation_helper_parentNode = this.firstNode.parentNode;                                         // 52
+                                                                                                               // 53
+    template._animation_helper_parentNode._uihooks = {                                                         // 54
+        insertElement: function (node, next) {                                                                 // 55
+            var $node = $(node);                                                                               // 56
+                                                                                                               // 57
+            $node.insertBefore(next);                                                                          // 58
+                                                                                                               // 59
+            // console.log('inserted', node, node._animation_helper_isVisible);                                // 60
+                                                                                                               // 61
+            if($node.hasClass('animate') && !checkForError($node)) {                                           // 62
+                                                                                                               // 63
+                                                                                                               // 64
+                                                                                                               // 65
+                // add to animation elements array                                                             // 66
+                // if(!_.contains(template._animation_helper_animationElements, node))                         // 67
+                //     template._animation_helper_animationElements.push(node);                                // 68
+                                                                                                               // 69
+                                                                                                               // 70
+                // animate                                                                                     // 71
+                $node.width(); // force-draw before animation                                                  // 72
+                $node.removeClass('animate');                                                                  // 73
+                                                                                                               // 74
+                $node.on('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd transitionEnd msTransitionEnd animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd animationEnd msAnimationEnd', function(e) {
+                    if (e.target === node) {                                                                   // 76
+                        $node.off(e);                                                                          // 77
+                        node._animation_helper_isVisible = true;                                               // 78
+                    }                                                                                          // 79
+                });                                                                                            // 80
+            }                                                                                                  // 81
+                                                                                                               // 82
+        },                                                                                                     // 83
+        removeElement: function (node) {                                                                       // 84
+            var $node = $(node);                                                                               // 85
+                // indexOfElement = _.indexOf(template._animation_helper_animationElements, node);             // 86
+                                                                                                               // 87
+            // console.log('removed',node, node._animation_helper_isVisible);                                  // 88
+                                                                                                               // 89
+            if(node._animation_helper_isVisible) { //&& !$node.hasClass('animate') //indexOfElement !== -1 &&  // 90
+                                                                                                               // 91
+                // add timeout in case the element wasn't removed                                              // 92
+                var timeoutId;                                                                                 // 93
+                if(Meteor.isClient) {                                                                          // 94
+                    timeoutId = Meteor.setTimeout(function(){                                                  // 95
+                        $node.remove();                                                                        // 96
+                        $node = null;                                                                          // 97
+                    }, 5000);                                                                                  // 98
+                }                                                                                              // 99
+                                                                                                               // 100
+                // remove from animation elements array                                                        // 101
+                // delete template._animationElements[indexOfElement];                                         // 102
+                $node.on('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd transitionEnd msTransitionEnd animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd animationEnd msAnimationEnd', function(e) {
+                    if (e.target === node) {                                                                   // 104
+                        $node.off(e);                                                                          // 105
+                                                                                                               // 106
+                        Meteor.clearTimeout(timeoutId);                                                        // 107
+                                                                                                               // 108
+                        delete node._animation_helper_isVisible;                                               // 109
+                        $node.remove();                                                                        // 110
+                        $node = null;                                                                          // 111
+                    }                                                                                          // 112
+                                                                                                               // 113
+                });                                                                                            // 114
+                $node.addClass('animate').width();                                                             // 115
+                                                                                                               // 116
+            // otherwise remove immedediately                                                                  // 117
+            } else {                                                                                           // 118
+                $node.remove();                                                                                // 119
+                $node = null;                                                                                  // 120
+            }                                                                                                  // 121
+                                                                                                               // 122
+        }                                                                                                      // 123
+    };                                                                                                         // 124
+};                                                                                                             // 125
+                                                                                                               // 126
+Template['Animate'].destroyed = function(){                                                                    // 127
+    var template = this;                                                                                       // 128
+                                                                                                               // 129
+    if(Meteor.isClient && template._animation_helper_parentNode) {                                             // 130
+        Tracker.afterFlush(function(){                                                                         // 131
+            template._animation_helper_parentNode._uihooks = null;                                             // 132
+        });                                                                                                    // 133
+    }                                                                                                          // 134
+};                                                                                                             // 135
+                                                                                                               // 136
+                                                                                                               // 137
+/**                                                                                                            // 138
+The destroyed method, which remove the hooks to make sure, they work again next time.                          // 139
+                                                                                                               // 140
+*/                                                                                                             // 141
+// Template['Animate'].destroyed = function(){                                                                 // 142
+//     var template = this;                                                                                    // 143
+//     // Meteor.defer(function(){                                                                             // 144
+//         template._animation_helper_firstNode.parentNode._uihooks = null;                                    // 145
+//     // });                                                                                                  // 146
+                                                                                                               // 147
+// };                                                                                                          // 148
+                                                                                                               // 149
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}).call(this);
+
+
+/* Exports */
+if (typeof Package === 'undefined') Package = {};
+Package['frozeman:animation-helper'] = {};
+
+})();

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" class="__meteor-css__" href="/0cffb09487835eb71b6768b6c1bd2a3817873e51.css">
+
+
+<script type="text/javascript">__meteor_runtime_config__ = JSON.parse(decodeURIComponent("%7B%22meteorRelease%22%3A%22METEOR%401.1.0.2%22%2C%22ROOT_URL%22%3A%22http%3A%2F%2Flocalhost%3A3000%2F%22%2C%22ROOT_URL_PATH_PREFIX%22%3A%22%22%2C%22appId%22%3A%22wzsvj5186nsct1gvqf6b%22%2C%22autoupdateVersion%22%3A%224ded6fdd2b5c6e2b1a24d603c4a7f8f837b93daa%22%2C%22autoupdateVersionRefreshable%22%3A%22eeadc46ad08e8cf18543e4018bf26a6a63926a19%22%2C%22autoupdateVersionCordova%22%3A%22none%22%7D"));</script>
+
+  <script type="text/javascript" src="/packages/underscore.js%3F0a80a8623e1b40b5df5a05582f288ddd586eaa18"></script>
+  <script type="text/javascript" src="/packages/meteor.js%3F43b7958c1598803e94014f27f5f622b0bddc0aaf"></script>
+  <script type="text/javascript" src="/packages/json.js%3Fe22856eae714c681199eabc5c0710b904b125554"></script>
+  <script type="text/javascript" src="/packages/base64.js%3F1a63019243b73298e2964e6d4680f25bca657726"></script>
+  <script type="text/javascript" src="/packages/ejson.js%3F71047b64b5196348bdbe5fd5eea9ac97a5a9eb14"></script>
+  <script type="text/javascript" src="/packages/logging.js%3F07e201b648f16be8435a4f666156995eeda0c750"></script>
+  <script type="text/javascript" src="/packages/reload.js%3Fda8974b7231dd8c0caccb5f322dcf97329d486d1"></script>
+  <script type="text/javascript" src="/packages/tracker.js%3F6d0890939291d9780f7e2607ee3af3e7f98a3d9c"></script>
+  <script type="text/javascript" src="/packages/random.js%3Ffe7b46080c91ce482acf6fc326afbc5b176f0502"></script>
+  <script type="text/javascript" src="/packages/retry.js%3F1f1dd2c35d300110fdaba51ce4473583bc3bf031"></script>
+  <script type="text/javascript" src="/packages/check.js%3Fac81167b8513b85b926c167bba423981b0c4cf9c"></script>
+  <script type="text/javascript" src="/packages/id-map.js%3F9ea6eaae8d74693ce2505a858d9a5e60cf191298"></script>
+  <script type="text/javascript" src="/packages/ordered-dict.js%3Fbf8af2f26c8d96bf8b2e6b407d3ed69f23c2cd37"></script>
+  <script type="text/javascript" src="/packages/geojson-utils.js%3F81b79d5cf96d00b4b7a28987debcffb665c17526"></script>
+  <script type="text/javascript" src="/packages/minimongo.js%3Faf9eb9d7447544ca9b839a3dcf7ed2da2209b56c"></script>
+  <script type="text/javascript" src="/packages/ddp.js%3Fd1840d3ba04c65ffade261f362e26699b7509706"></script>
+  <script type="text/javascript" src="/packages/mongo.js%3F3cfe0c5981c197df33036a37574850f057e934a6"></script>
+  <script type="text/javascript" src="/packages/autoupdate.js%3F9a5ea03bf057815385bf569c7acc2c285c005491"></script>
+  <script type="text/javascript" src="/packages/meteor-platform.js%3F499a2f8522e25820b1153c69a92751ccaae507b3"></script>
+  <script type="text/javascript" src="/packages/reactive-var.js%3F20335b7b37165980ddd9f23943b2e5b00aae1cc2"></script>
+  <script type="text/javascript" src="/packages/less.js%3F7d1bf981a25a449d6270558bcfc983313c40cd26"></script>
+  <script type="text/javascript" src="/packages/deps.js%3F504589e1e9585dec8f9f6094e5a87b22de3783a1"></script>
+  <script type="text/javascript" src="/packages/jquery.js%3Fdd8bac56f8fd3666d433d2285ae01e52597cc51a"></script>
+  <script type="text/javascript" src="/packages/htmljs.js%3F567eb96d5d22631c03d6aca6afa4c42f0d1295f2"></script>
+  <script type="text/javascript" src="/packages/observe-sequence.js%3F0532a9dd76dd78f543eb4d79a1e429df186d8bde"></script>
+  <script type="text/javascript" src="/packages/blaze.js%3Fa5c324925e5f6e800a4c618d71caf2848b53bf51"></script>
+  <script type="text/javascript" src="/packages/ui.js%3F5a663333fd30f8fd913f110e0ef779e84f67c4b8"></script>
+  <script type="text/javascript" src="/packages/templating.js%3F376767bb0d2463b3b2615a1b90e77f6b22d39d7b"></script>
+  <script type="text/javascript" src="/packages/iron_core.js%3Fd966a1f70c94792fd94c8a155bdbef9bec5e0047"></script>
+  <script type="text/javascript" src="/packages/iron_dynamic-template.js%3Fd425554c9847e4a80567f8ca55719cd6ae3f2722"></script>
+  <script type="text/javascript" src="/packages/iron_layout.js%3F4e65c46acdaf0ce6a8b1a479d7b9d0b5c0902062"></script>
+  <script type="text/javascript" src="/packages/iron_url.js%3F6979e41649a22dcf609df30fc533e36037c7ae58"></script>
+  <script type="text/javascript" src="/packages/iron_middleware-stack.js%3F0e0f6983a838a6516556b08e62894f89720e2c44"></script>
+  <script type="text/javascript" src="/packages/iron_location.js%3Fca4f0f6672edbfb6cafab6e5c024208d9364eac9"></script>
+  <script type="text/javascript" src="/packages/reactive-dict.js%3F1cb61826ceb23464171f17c2191c7e04a9b91508"></script>
+  <script type="text/javascript" src="/packages/iron_controller.js%3Fb02790701804563eafedb2e68c602154983ade06"></script>
+  <script type="text/javascript" src="/packages/iron_router.js%3Fa427868585af16bb88b7c9996b2449aebb8dbf51"></script>
+  <script type="text/javascript" src="/packages/fastclick.js%3Ffe15770c77da049b885a0d66c669fa44057f05ee"></script>
+  <script type="text/javascript" src="/packages/coffeescript.js%3F969f68786bbc68e6cad299e74922a53af3d1404b"></script>
+  <script type="text/javascript" src="/packages/session.js%3Fdaf192a7244079d45db32a6fc26ebc3881fc1aa3"></script>
+  <script type="text/javascript" src="/packages/tap_i18n.js%3F6a164f6157581b1b997be361e885d76c23035266"></script>
+  <script type="text/javascript" src="/packages/3stack_bignumber.js%3Ff5fef39fe94eb31a31ebf703b83446ff9ed54cca"></script>
+  <script type="text/javascript" src="/packages/underscorestring_underscore.string.js%3F35ddd8abcc8aa6f5defd07a1ea7de28a46a401e3"></script>
+  <script type="text/javascript" src="/packages/zimme_iron-router-active.js%3Ff93a6fd81d553dc075e01628e69f35c160a9292a"></script>
+  <script type="text/javascript" src="/packages/yasinuslu_blaze-meta.js%3F02549d636501ba8506f03af6a986f9bc8a696a02"></script>
+  <script type="text/javascript" src="/packages/numeral_numeral.js%3F8ec01dc0e7d6181bcb33f215b067795004323c9e"></script>
+  <script type="text/javascript" src="/packages/ethereum_tools.js%3Fffa2917c8561ac8b4a5f3a07809ba4103e6761a8"></script>
+  <script type="text/javascript" src="/packages/frozeman_animation-helper.js%3F0e877c6fc99752c26d27dc1bbdfb3e86789bd7de"></script>
+  <script type="text/javascript" src="/packages/frozeman_template-var.js%3Fe5dfb78a26e89454f820916a87f0b19f25d682e1"></script>
+  <script type="text/javascript" src="/packages/mistereo_identicon.js%3F6d63ab02a70485489cf167f10961f3c873a1deca"></script>
+  <script type="text/javascript" src="/packages/ethereum_elements.js%3Fb9445c187e41a4df0afa83836f6f712d4c9b793c"></script>
+  <script type="text/javascript" src="/packages/ethereum_web3.js%3F047d9f63483d44c743359ccc7dd278e0665d6343"></script>
+  <script type="text/javascript" src="/packages/amplify.js%3F0943ecb804169b991257a319fa92b9e6f34e2d1b"></script>
+  <script type="text/javascript" src="/packages/frozeman_persistent-minimongo.js%3Fc9b4fcf875bbb34a93bc6349ef0f6ea2ace17d15"></script>
+  <script type="text/javascript" src="/packages/localstorage.js%3F9ec7d68858d2e33aa807e5cfd5e12bb4d62fe00c"></script>
+  <script type="text/javascript" src="/packages/frozeman_storage.js%3F21dbb07d643746620eb5b3df7185471043994453"></script>
+  <script type="text/javascript" src="/packages/frozeman_reactive-timer.js%3Fb8febca951f0bdc5d51a282175db084c8eb39505"></script>
+  <script type="text/javascript" src="/packages/mrt_moment.js%3Fd7e4a40c3c8d0a0bbca78591d0b5385f3271212c"></script>
+  <script type="text/javascript" src="/packages/dburles_collection-helpers.js%3Fb2a4d3580ed2804e09676754c47bcebe7a361fa8"></script>
+  <script type="text/javascript" src="/packages/matb33_collection-hooks.js%3F6be355737d1b00b2f05a3c833db2d77cd78d8d47"></script>
+  <script type="text/javascript" src="/packages/raix_handlebar-helpers.js%3F7d3b7f73925dd049e8e445e82fec12071446eebe"></script>
+  <script type="text/javascript" src="/packages/chuangbo_cookie.js%3F06436babb94ec01963deef78f0a86cf163cf06f4"></script>
+  <script type="text/javascript" src="/packages/markdown.js%3F435f49822ea11958519040ad4f2b046517164765"></script>
+  <script type="text/javascript" src="/packages/handlebars.js%3F038145b6256cd6a69c11650ed6bf12b093920095"></script>
+  <script type="text/javascript" src="/packages/mizzao_sharejs.js%3F25f3e55a2ab454513b9fd5c5c06828dab3bb200d"></script>
+  <script type="text/javascript" src="/packages/mizzao_sharejs-ace.js%3F1ee80758da440d5ecfbf99d17a215427f0ee5f81"></script>
+  <script type="text/javascript" src="/packages/webapp.js%3Fe1be090051b82f046484dccc2de7d747e50c7328"></script>
+  <script type="text/javascript" src="/packages/livedata.js%3F718526445deb4d9baacb6d92c551adea1d36c1e1"></script>
+  <script type="text/javascript" src="/packages/spacebars.js%3F7bafbe05ec09b6bbb6a3b276537e4995ab298a2f"></script>
+  <script type="text/javascript" src="/packages/launch-screen.js%3F495e58cf2465ba553324c68301cc62076b1fda1e"></script>
+  <script type="text/javascript" src="/packages/global-imports.js%3F39cf285489d45a9fe24c96a8e5643a7acfdc9192"></script>
+  <script type="text/javascript" src="/client/templates/components/template.accounts.js%3F98f23c0f1aa91e9cd17e25c7136ce36673a94194"></script>
+  <script type="text/javascript" src="/client/templates/components/template.console.js%3F6018004eecdc1048a71551d77cdec95c3bad243f"></script>
+  <script type="text/javascript" src="/client/templates/components/template.contract.js%3Fa497d6449b8cec43905105b702e0fa5bf101d815"></script>
+  <script type="text/javascript" src="/client/templates/components/template.diagnostics.js%3F228831e54b048ecea32337c960b752cc94037d57"></script>
+  <script type="text/javascript" src="/client/templates/components/template.methods.js%3Ff3b4505de93140e28978df402567d80a9ca5db1c"></script>
+  <script type="text/javascript" src="/client/templates/components/template.settings.js%3Fdec051bbd18ccc0ff90e89745912cda7cf9a4cc9"></script>
+  <script type="text/javascript" src="/client/templates/components/template.source.js%3Fc8fcd4151533d288667dc7432b5c9c46119361ae"></script>
+  <script type="text/javascript" src="/client/templates/layout/template._footer.js%3F3fd9c34825feb645da34d2b82fa801c4b94ec9fa"></script>
+  <script type="text/javascript" src="/client/templates/layout/template._header.js%3F92aca29ffde3a576002f23a69ce6cf293c461826"></script>
+  <script type="text/javascript" src="/client/templates/layout/template.notFound.js%3F72f4730487bac4b01eb536c2e41603a0a24fab34"></script>
+  <script type="text/javascript" src="/client/templates/views/template.editor.js%3F2318e7018877fa95eeaf6a0658659af7ee64c10e"></script>
+  <script type="text/javascript" src="/client/templates/layout/template.main.js%3F31c23074cb8f0398653ca95dde5e4c1966e109c9"></script>
+  <script type="text/javascript" src="/client/lib/thirdparty/libs/ace.js%3F94ec58751bcbdd465133075dbfb6afb690d8e596"></script>
+  <script type="text/javascript" src="/client/lib/thirdparty/libs/theme-monokai.js%3F2a3453bba5b8f7e5a39caf4f0fb6016f1b588104"></script>
+  <script type="text/javascript" src="/client/lib/compatibility/bootstrap.js%3F873774dc723bb4cb446591f19a0ca4df8ff19ffb"></script>
+  <script type="text/javascript" src="/client/lib/helpers/helperFunctions.js%3Fb9b85757a658bd35b9cc22c47362dc4c2aabcce0"></script>
+  <script type="text/javascript" src="/client/lib/helpers/mixrHelpers.js%3F05785add0cce91d0e7fc4e298136fa6ab39acaaa"></script>
+  <script type="text/javascript" src="/client/lib/helpers/templateHelpers.js%3Fb12fe8d723540b8a1a29a4fa20f4f1aadbed4dbe"></script>
+  <script type="text/javascript" src="/client/lib/thirdparty/chance.min.js%3F29031db9eabd6d90c01274773c70665583500912"></script>
+  <script type="text/javascript" src="/client/lib/thirdparty/mode-solidity.js%3F8c29e73ddb3d4950184c53037ca0ef6c67f56d22"></script>
+  <script type="text/javascript" src="/client/lib/thirdparty/soljs.js%3F4574e9e3979b497676d4214fb7070cec9eb8d71e"></script>
+  <script type="text/javascript" src="/client/lib/thirdparty/string.js%3Fbb88be5ddffa4767191caf6c07bb7612a16563ec"></script>
+  <script type="text/javascript" src="/client/lib/thirdpartyConfig.js%3Fa19f6a2bc9249bb90d549bc52ae2e3890cd6ef27"></script>
+  <script type="text/javascript" src="/client/templates/components/accounts.js%3Fa998deca2bfb7cad57e827a8b752e701d7714720"></script>
+  <script type="text/javascript" src="/client/templates/components/console.js%3F5ef2ee1b553e04a917bcda3c20931c8eb2f7fff1"></script>
+  <script type="text/javascript" src="/client/templates/components/contract.js%3F2ac9e592536fa1d71488e490ddb7a753c8f10204"></script>
+  <script type="text/javascript" src="/client/templates/components/diagnostics.js%3F4d2ed625938959a17e3b8cc05317c07bf5590a99"></script>
+  <script type="text/javascript" src="/client/templates/components/methods.js%3Fe6e9d9d3595f5db5af4fb5a7ef138494c7ab5c1a"></script>
+  <script type="text/javascript" src="/client/templates/components/source.js%3F4a0114bd7c879f2a370d443271684e105b24529b"></script>
+  <script type="text/javascript" src="/client/templates/views/editor.js%3F7a93507d7f1625af7b7ff70d99ca3faa449c1591"></script>
+  <script type="text/javascript" src="/client/collections.js%3Fc127e8dbbee61b20d47e34a97e20c5c3bb143c2d"></script>
+  <script type="text/javascript" src="/client/index.js%3Fb1f9f7c4ea4d5441dd05a6358d6ec7826ab2bfa5"></script>
+  <script type="text/javascript" src="/client/meta.js%3Fdc5a5870263837e03b338156b989526303fc4987"></script>
+  <script type="text/javascript" src="/client/routes.js%3F621a6f037c53a520ab1307db3bdae636acbc0704"></script>
+  <script type="text/javascript" src="/home/nick/Ethereum/meteor-dapp-mixr/app/i18n/app.en.i18n.js%3Fd14f5f5f816db62be77f1ebd3a3828e050f47905"></script>
+  <script type="text/javascript" src="/home/nick/Ethereum/meteor-dapp-mixr/app/i18n/dapp.en.i18n.js%3F2e0d9d7eb653f07d62985532642d2e8492e8cac7"></script>
+  <script type="text/javascript" src="/project-i18n.js%3F0cf2ed67dd29660cd790f2aad27f8d18ad160e42"></script>
+
+
+
+<script src="/packages/mizzao_sharejs/.npm/package/node_modules/share/webclient/ace.js"></script>
+<base href="/">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-194x194.png" sizes="194x194">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/images/favicons/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon.png" sizes="16x16">
+    <link rel="manifest" href="/images/favicons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    
+	<meta name="msapplication-config" content="/images/favicons/browserconfig.xml">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="ethereum-dapp-url-bar-style" content="transparent">
+	<meta name="ethereum-dapp-info" content="">
+	<!-- currently supported badges: number from 0 to 999 or strings: warning, ghost, question, info, check or gear -->
+	<meta name="ethereum-dapp-badge" content="">
+	<!-- <link rel="ethereum-dapp-icon" href="/apple-touch-icon-precomposed.png"> -->
+	<!-- <link rel="apple-touch-icon" href="/apple-touch-icon-precomposed.png"> -->
+	<!-- <link rel="apple-touch-startup-image" href="/startup.png"> -->
+</head>
+<body>
+
+</body>
+</html>

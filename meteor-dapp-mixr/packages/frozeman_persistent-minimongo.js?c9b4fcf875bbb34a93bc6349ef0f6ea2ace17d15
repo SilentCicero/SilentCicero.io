@@ -1,0 +1,262 @@
+//////////////////////////////////////////////////////////////////////////
+//                                                                      //
+// This is a generated file. You can view the original                  //
+// source in your browser if your browser supports source maps.         //
+//                                                                      //
+// If you are using Chrome, open the Developer Tools and click the gear //
+// icon in its lower right corner. In the General Settings panel, turn  //
+// on 'Enable source maps'.                                             //
+//                                                                      //
+// If you are using Firefox 23, go to `about:config` and set the        //
+// `devtools.debugger.source-maps-enabled` preference to true.          //
+// (The preference should be on by default in Firefox 24; versions      //
+// older than 23 do not support source maps.)                           //
+//                                                                      //
+//////////////////////////////////////////////////////////////////////////
+
+
+(function () {
+
+/* Imports */
+var Meteor = Package.meteor.Meteor;
+var _ = Package.underscore._;
+
+/* Package-scope variables */
+var PersistentMinimongo;
+
+(function () {
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                   //
+// packages/frozeman:persistent-minimongo/persistent-minimongo.js                                    //
+//                                                                                                   //
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                     //
+/**                                                                                                  // 1
+Packages                                                                                             // 2
+                                                                                                     // 3
+@module Packages                                                                                     // 4
+*/                                                                                                   // 5
+                                                                                                     // 6
+/**                                                                                                  // 7
+The PersistentMinimongo package                                                                      // 8
+                                                                                                     // 9
+@class PersistentMinimongo                                                                           // 10
+@constructor                                                                                         // 11
+*/                                                                                                   // 12
+                                                                                                     // 13
+                                                                                                     // 14
+                                                                                                     // 15
+/**                                                                                                  // 16
+If the localstorage goes over 4.8 MB, trim the collections.                                          // 17
+                                                                                                     // 18
+@property capLocalStorageSize                                                                        // 19
+*/                                                                                                   // 20
+var capLocalStorageSize = 4.8;                                                                       // 21
+                                                                                                     // 22
+/**                                                                                                  // 23
+If the localstorage goes over `capLocalStorageSize`, trim the current collection,                    // 24
+which wanted to add a new entry, by 50 entries.                                                      // 25
+                                                                                                     // 26
+@property trimCollectionBy                                                                           // 27
+*/                                                                                                   // 28
+var trimCollectionBy = 50;                                                                           // 29
+                                                                                                     // 30
+                                                                                                     // 31
+PersistentMinimongo = function (collection) {                                                        // 32
+    var self = this;                                                                                 // 33
+    if (! (self instanceof PersistentMinimongo))                                                     // 34
+            throw new Error('use "new" to construct a PersistentMinimongo');                         // 35
+                                                                                                     // 36
+    self.key = 'minimongo__' + collection._name;                                                     // 37
+    self.col = collection;                                                                           // 38
+    self.cur = self.col.find({});                                                                    // 39
+    self.stats = { added: 0, removed: 0, changed: 0 };                                               // 40
+                                                                                                     // 41
+    persisters.push(self);                                                                           // 42
+                                                                                                     // 43
+    // Meteor.startup(function () {                                                                  // 44
+        // load from storage                                                                         // 45
+        self.refresh(true);                                                                          // 46
+                                                                                                     // 47
+        self.cur.observe({                                                                           // 48
+            added: function (doc) {                                                                  // 49
+                                                                                                     // 50
+                // Check if the localstorage is to big and reduce the current collection by 50 items // 51
+                self.capCollection();                                                                // 52
+                                                                                                     // 53
+                // get or initialize tracking list                                                   // 54
+                var list = amplify.store(self.key);                                                  // 55
+                if (! list)                                                                          // 56
+                    list = [];                                                                       // 57
+                                                                                                     // 58
+                // add document id to tracking list and store                                        // 59
+                if (! _.contains(list, doc._id)) {                                                   // 60
+                    list.push(doc._id);                                                              // 61
+                    amplify.store(self.key, list);                                                   // 62
+                }                                                                                    // 63
+                                                                                                     // 64
+                // store copy of document into local storage, if not already there                   // 65
+                var key = self._makeDataKey(doc._id);                                                // 66
+                if(! amplify.store(key)) {                                                           // 67
+                    amplify.store(key, doc);                                                         // 68
+                }                                                                                    // 69
+                                                                                                     // 70
+                ++self.stats.added;                                                                  // 71
+            },                                                                                       // 72
+                                                                                                     // 73
+            removed: function (doc) {                                                                // 74
+                var list = amplify.store(self.key);                                                  // 75
+                                                                                                     // 76
+                // if not in list, nothing to do                                                     // 77
+                if(! _.contains(list, doc._id))                                                      // 78
+                    return;                                                                          // 79
+                                                                                                     // 80
+                // remove from list                                                                  // 81
+                list = _.without(list, doc._id);                                                     // 82
+                                                                                                     // 83
+                // remove document copy from local storage                                           // 84
+                amplify.store(self._makeDataKey(doc._id), null);                                     // 85
+                                                                                                     // 86
+                // if tracking list is empty, delete; else store updated copy                        // 87
+                amplify.store(self.key, list.length === 0 ? null : list);                            // 88
+                                                                                                     // 89
+                ++self.stats.removed;                                                                // 90
+            },                                                                                       // 91
+                                                                                                     // 92
+            changed: function (newDoc, oldDoc) {                                                     // 93
+                // update document in local storage                                                  // 94
+                amplify.store(self._makeDataKey(newDoc._id), newDoc);                                // 95
+                ++self.stats.changed;                                                                // 96
+            }                                                                                        // 97
+        });                                                                                          // 98
+    // });                                                                                           // 99
+};                                                                                                   // 100
+                                                                                                     // 101
+PersistentMinimongo.prototype = {                                                                    // 102
+    constructor: PersistentMinimongo,                                                                // 103
+    _getStats: function () {                                                                         // 104
+        return this.stats;                                                                           // 105
+    },                                                                                               // 106
+    _getKey: function () {                                                                           // 107
+        return this.key;                                                                             // 108
+    },                                                                                               // 109
+    _makeDataKey: function (id) {                                                                    // 110
+        return this.key + '__' + id;                                                                 // 111
+    },                                                                                               // 112
+    /**                                                                                              // 113
+    Refresh the local storage                                                                        // 114
+                                                                                                     // 115
+    @method refresh                                                                                  // 116
+    @return {String}                                                                                 // 117
+    */                                                                                               // 118
+    refresh: function (init) {                                                                       // 119
+        var self = this;                                                                             // 120
+        var list = amplify.store(self.key);                                                          // 121
+        var dels = [];                                                                               // 122
+                                                                                                     // 123
+        self.stats.added = 0;                                                                        // 124
+                                                                                                     // 125
+        if (!! list) {                                                                               // 126
+            var length = list.length;                                                                // 127
+            list = _.filter(list, function (id) {                                                    // 128
+                var doc = amplify.store(self._makeDataKey(id));                                      // 129
+                if(!! doc) {                                                                         // 130
+                    var d = self.col.findOne({ _id: doc._id });                                      // 131
+                    if(d)                                                                            // 132
+                        self.col.update({ _id: d._id }, doc);                                        // 133
+                    else                                                                             // 134
+                        self.col.insert(doc);                                                        // 135
+                }                                                                                    // 136
+                                                                                                     // 137
+                return !! doc;                                                                       // 138
+            });                                                                                      // 139
+                                                                                                     // 140
+            // if not initializing, check for deletes                                                // 141
+            if(! init) {                                                                             // 142
+                self.col.find({}).forEach(function (doc) {                                           // 143
+                    if(! _.contains(list, doc._id))                                                  // 144
+                        dels.push(doc._id);                                                          // 145
+                });                                                                                  // 146
+                                                                                                     // 147
+                _.each(dels, function (id) {                                                         // 148
+                    self.col.remove({ _id: id });                                                    // 149
+                });                                                                                  // 150
+            }                                                                                        // 151
+                                                                                                     // 152
+            // if initializing, save cleaned list (if changed)                                       // 153
+            if(init && length != list.length)                                                        // 154
+                amplify.store(self.key, list.length === 0 ? null : list);                            // 155
+        }                                                                                            // 156
+    },                                                                                               // 157
+    /**                                                                                              // 158
+    Gets the current localstorage size in MB                                                         // 159
+                                                                                                     // 160
+    @method localStorageSize                                                                         // 161
+    @return {String} total localstorage size in MB                                                   // 162
+    */                                                                                               // 163
+    localStorageSize: function() {                                                                   // 164
+                                                                                                     // 165
+        // function toSizeMB(info) {                                                                 // 166
+        //   info.size = toMB(info.size).toFixed(2) + ' MB';                                         // 167
+        //   return info;                                                                            // 168
+        // }                                                                                         // 169
+                                                                                                     // 170
+        // var sizes = Object.keys(localStorage).map(toSize).map(toSizeMB);                          // 171
+        // console.table(sizes);                                                                     // 172
+                                                                                                     // 173
+        var size = 0;                                                                                // 174
+        if(localStorage) {                                                                           // 175
+            _.each(Object.keys(localStorage), function(key){                                         // 176
+                size += localStorage[key].length * 2 / 1024 / 1024;                                  // 177
+            });                                                                                      // 178
+        }                                                                                            // 179
+                                                                                                     // 180
+        return size;                                                                                 // 181
+    },                                                                                               // 182
+    /**                                                                                              // 183
+    Check if the localstorage is to big and reduce the current collection by 50 items                // 184
+                                                                                                     // 185
+    @method localStorageSize                                                                         // 186
+    @return {String}                                                                                 // 187
+    */                                                                                               // 188
+    capCollection: function(){                                                                       // 189
+        var _this = this;                                                                            // 190
+                                                                                                     // 191
+        if(_this.localStorageSize() > capLocalStorageSize) {                                         // 192
+            console.log(_this.localStorageSize(), _this.col.find({}).count());                       // 193
+            // find the first 50 entries and remove them                                             // 194
+            _.each(_this.col.find({}, {limit: trimCollectionBy}).fetch(), function(item){            // 195
+                _this.col.remove(item._id);                                                          // 196
+            });                                                                                      // 197
+        }                                                                                            // 198
+    }                                                                                                // 199
+};                                                                                                   // 200
+                                                                                                     // 201
+var persisters = [];                                                                                 // 202
+var lpTimer = null;                                                                                  // 203
+                                                                                                     // 204
+// React on manual local storage changes                                                             // 205
+Meteor.startup(function () {                                                                         // 206
+    $(window).bind('storage', function (e) {                                                         // 207
+        Meteor.clearTimeout(lpTimer);                                                                // 208
+        lpTimer = Meteor.setTimeout(function () {                                                    // 209
+            _.each(persisters, function (lp) {                                                       // 210
+                lp.refresh(false);                                                                   // 211
+            });                                                                                      // 212
+        }, 250);                                                                                     // 213
+    });                                                                                              // 214
+});                                                                                                  // 215
+                                                                                                     // 216
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}).call(this);
+
+
+/* Exports */
+if (typeof Package === 'undefined') Package = {};
+Package['frozeman:persistent-minimongo'] = {
+  PersistentMinimongo: PersistentMinimongo
+};
+
+})();

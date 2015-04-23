@@ -1,0 +1,16 @@
+(function(){
+Template.__checkName("layout_main");
+Template["layout_main"] = new Template("Template.layout_main", (function() {
+  var view = this;
+  return [ Blaze._TemplateWith(function() {
+    return {
+      region: Spacebars.call("header")
+    };
+  }, function() {
+    return Spacebars.include(view.lookupTemplate("yield"));
+  }), HTML.Raw("\n\n	<!-- content -->\n	"), HTML.MAIN({
+    "class": "container-fluid"
+  }, "\n		", Spacebars.include(view.lookupTemplate("yield")), "\n	") ];
+}));
+
+})();

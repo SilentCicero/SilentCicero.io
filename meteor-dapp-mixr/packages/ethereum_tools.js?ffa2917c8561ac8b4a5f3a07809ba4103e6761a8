@@ -1,0 +1,230 @@
+//////////////////////////////////////////////////////////////////////////
+//                                                                      //
+// This is a generated file. You can view the original                  //
+// source in your browser if your browser supports source maps.         //
+//                                                                      //
+// If you are using Chrome, open the Developer Tools and click the gear //
+// icon in its lower right corner. In the General Settings panel, turn  //
+// on 'Enable source maps'.                                             //
+//                                                                      //
+// If you are using Firefox 23, go to `about:config` and set the        //
+// `devtools.debugger.source-maps-enabled` preference to true.          //
+// (The preference should be on by default in Firefox 24; versions      //
+// older than 23 do not support source maps.)                           //
+//                                                                      //
+//////////////////////////////////////////////////////////////////////////
+
+
+(function () {
+
+/* Imports */
+var Meteor = Package.meteor.Meteor;
+var BigNumber = Package['3stack:bignumber'].BigNumber;
+
+/* Package-scope variables */
+var EthTools;
+
+(function () {
+
+//////////////////////////////////////////////////////////////////////////
+//                                                                      //
+// packages/ethereum:tools/ethtools.js                                  //
+//                                                                      //
+//////////////////////////////////////////////////////////////////////////
+                                                                        //
+/**                                                                     // 1
+Template Controllers                                                    // 2
+                                                                        // 3
+@module Packages                                                        // 4
+*/                                                                      // 5
+                                                                        // 6
+/**                                                                     // 7
+Helper functions for ethereum dapps                                     // 8
+                                                                        // 9
+@class [packages] ethereum:tools                                        // 10
+@constructor                                                            // 11
+*/                                                                      // 12
+                                                                        // 13
+EthTools = {};                                                          // 14
+                                                                        // 15
+/**                                                                     // 16
+Takes a number of wei and converts it to any other ether unit.          // 17
+                                                                        // 18
+Possible units are:                                                     // 19
+                                                                        // 20
+    - kwei/ada                                                          // 21
+    - mwei/babbage                                                      // 22
+    - gwei/shannon                                                      // 23
+    - szabo                                                             // 24
+    - finney                                                            // 25
+    - ether                                                             // 26
+    - kether/grand/einstein                                             // 27
+    - mether                                                            // 28
+    - gether                                                            // 29
+    - tether                                                            // 30
+                                                                        // 31
+@method fromWei                                                         // 32
+@param {Number|String} number can be a number or a HEX of a decimal     // 33
+@param {String} unit the unit to convert to                             // 34
+@return {Number}                                                        // 35
+*/                                                                      // 36
+EthTools.fromWei = function(number, unit) {                             // 37
+    if(!number)                                                         // 38
+        return number;                                                  // 39
+                                                                        // 40
+    if(typeof number === 'string' && number.indexOf('0x') === 0)        // 41
+        number = web3.toDecimal(number);                                // 42
+                                                                        // 43
+    if(!(number instanceof BigNumber))                                  // 44
+        number = new BigNumber(number.toString()); // toString to prevent errors, the user have to handle giving correct bignums themselves
+                                                                        // 46
+                                                                        // 47
+    unit = unit.toLowerCase();                                          // 48
+                                                                        // 49
+    switch(unit) {                                                      // 50
+        case 'kwei':                                                    // 51
+        case 'ada':                                                     // 52
+            number = number.dividedBy(1000);                            // 53
+            break;                                                      // 54
+        case 'mwei':                                                    // 55
+        case 'babbage':                                                 // 56
+            number = number.dividedBy(1000000);                         // 57
+            break;                                                      // 58
+        case 'gwei':                                                    // 59
+        case 'schannon':                                                // 60
+            number = number.dividedBy(1000000000);                      // 61
+            break;                                                      // 62
+        case 'szabo':                                                   // 63
+            number = number.dividedBy(1000000000000);                   // 64
+            break;                                                      // 65
+        case 'finney':                                                  // 66
+            number = number.dividedBy(1000000000000000);                // 67
+            break;                                                      // 68
+        case 'ether':                                                   // 69
+            number = number.dividedBy(1000000000000000000);             // 70
+            break;                                                      // 71
+        case 'kether':                                                  // 72
+        case 'grand':                                                   // 73
+        case 'einstein':                                                // 74
+            number = number.dividedBy(1000000000000000000000);          // 75
+            break;                                                      // 76
+        case 'mether':                                                  // 77
+            number = number.dividedBy(1000000000000000000000000);       // 78
+            break;                                                      // 79
+        case 'gether':                                                  // 80
+            number = number.dividedBy(1000000000000000000000000000);    // 81
+            break;                                                      // 82
+        case 'tether':                                                  // 83
+            number = number.dividedBy(1000000000000000000000000000000); // 84
+            break;                                                      // 85
+    }                                                                   // 86
+                                                                        // 87
+    return number.toNumber();                                           // 88
+};                                                                      // 89
+                                                                        // 90
+/**                                                                     // 91
+Takes a number of a unit and converts it to wei.                        // 92
+                                                                        // 93
+Possible units are:                                                     // 94
+                                                                        // 95
+    - kwei/ada                                                          // 96
+    - mwei/babbage                                                      // 97
+    - gwei/shannon                                                      // 98
+    - szabo                                                             // 99
+    - finney                                                            // 100
+    - ether                                                             // 101
+    - kether/grand/einstein                                             // 102
+    - mether                                                            // 103
+    - gether                                                            // 104
+    - tether                                                            // 105
+                                                                        // 106
+@method toWei                                                           // 107
+@param {Number|String} number can be a number or a HEX of a decimal     // 108
+@param {String} unit the unit to convert to                             // 109
+@return {Number}                                                        // 110
+*/                                                                      // 111
+EthTools.toWei = function(number, unit) {                               // 112
+    if(!number)                                                         // 113
+        return number;                                                  // 114
+                                                                        // 115
+    if(typeof number === 'string' && number.indexOf('0x') === 0)        // 116
+        number = web3.toDecimal(number);                                // 117
+                                                                        // 118
+    if(!(number instanceof BigNumber))                                  // 119
+        number = new BigNumber(number.toString());// toString to prevent errors, the user have to handle giving correct bignums themselves
+                                                                        // 121
+                                                                        // 122
+    unit = unit.toLowerCase();                                          // 123
+                                                                        // 124
+    switch(unit) {                                                      // 125
+        case 'kwei':                                                    // 126
+        case 'ada':                                                     // 127
+            number = number.times(1000);                                // 128
+            break;                                                      // 129
+        case 'mwei':                                                    // 130
+        case 'babbage':                                                 // 131
+            number = number.times(1000000);                             // 132
+            break;                                                      // 133
+        case 'gwei':                                                    // 134
+        case 'schannon':                                                // 135
+            number = number.times(1000000000);                          // 136
+            break;                                                      // 137
+        case 'szabo':                                                   // 138
+            number = number.times(1000000000000);                       // 139
+            break;                                                      // 140
+        case 'finney':                                                  // 141
+            number = number.times(1000000000000000);                    // 142
+            break;                                                      // 143
+        case 'ether':                                                   // 144
+            number = number.times(1000000000000000000);                 // 145
+            break;                                                      // 146
+        case 'kether':                                                  // 147
+        case 'grand':                                                   // 148
+        case 'einstein':                                                // 149
+            number = number.times(1000000000000000000000);              // 150
+            break;                                                      // 151
+        case 'mether':                                                  // 152
+            number = number.times(1000000000000000000000000);           // 153
+            break;                                                      // 154
+        case 'gether':                                                  // 155
+            number = number.times(1000000000000000000000000000);        // 156
+            break;                                                      // 157
+        case 'tether':                                                  // 158
+            number = number.times(1000000000000000000000000000000);     // 159
+            break;                                                      // 160
+    }                                                                   // 161
+                                                                        // 162
+    return number.toNumber();                                           // 163
+};                                                                      // 164
+                                                                        // 165
+                                                                        // 166
+/**                                                                     // 167
+Checks if the given string is a valid ethereum HEX address.             // 168
+                                                                        // 169
+@method isAddress                                                       // 170
+@param {String} address the given HEX adress                            // 171
+@return {Boolean}                                                       // 172
+*/                                                                      // 173
+EthTools.isAddress = function(address) {                                // 174
+    if(address.indexOf('0x') === 0 && address.length != 42)             // 175
+        return false;                                                   // 176
+    if(address.indexOf('0x') === -1 && address.length != 40)            // 177
+        return false;                                                   // 178
+                                                                        // 179
+    return /^\w+$/.test(address);                                       // 180
+};                                                                      // 181
+                                                                        // 182
+                                                                        // 183
+                                                                        // 184
+//////////////////////////////////////////////////////////////////////////
+
+}).call(this);
+
+
+/* Exports */
+if (typeof Package === 'undefined') Package = {};
+Package['ethereum:tools'] = {
+  EthTools: EthTools
+};
+
+})();

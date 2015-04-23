@@ -1,0 +1,523 @@
+//////////////////////////////////////////////////////////////////////////
+//                                                                      //
+// This is a generated file. You can view the original                  //
+// source in your browser if your browser supports source maps.         //
+//                                                                      //
+// If you are using Chrome, open the Developer Tools and click the gear //
+// icon in its lower right corner. In the General Settings panel, turn  //
+// on 'Enable source maps'.                                             //
+//                                                                      //
+// If you are using Firefox 23, go to `about:config` and set the        //
+// `devtools.debugger.source-maps-enabled` preference to true.          //
+// (The preference should be on by default in Firefox 24; versions      //
+// older than 23 do not support source maps.)                           //
+//                                                                      //
+//////////////////////////////////////////////////////////////////////////
+
+
+(function () {
+
+/* Imports */
+var Meteor = Package.meteor.Meteor;
+var _ = Package.underscore._;
+var $ = Package.jquery.$;
+var jQuery = Package.jquery.jQuery;
+var Template = Package.templating.Template;
+var EthTools = Package['ethereum:tools'].EthTools;
+var TemplateVar = Package['frozeman:template-var'].TemplateVar;
+var Blaze = Package.blaze.Blaze;
+var UI = Package.blaze.UI;
+var Handlebars = Package.blaze.Handlebars;
+var HTML = Package.htmljs.HTML;
+
+(function () {
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                     //
+// packages/ethereum:elements/template.identicon.js                                                    //
+//                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                       //
+                                                                                                       // 1
+Template.__checkName("dapp_identicon");                                                                // 2
+Template["dapp_identicon"] = new Template("Template.dapp_identicon", (function() {                     // 3
+  var view = this;                                                                                     // 4
+  return Blaze.If(function() {                                                                         // 5
+    return Spacebars.call(view.lookup("identity"));                                                    // 6
+  }, function() {                                                                                      // 7
+    return [ "\n        ", HTML.A({                                                                    // 8
+      href: function() {                                                                               // 9
+        return Spacebars.mustache(view.lookup("pathFor"), Spacebars.kw({                               // 10
+          route: "userProfile",                                                                        // 11
+          userId: view.lookup("identity")                                                              // 12
+        }));                                                                                           // 13
+      },                                                                                               // 14
+      "class": function() {                                                                            // 15
+        return [ "dapp-identicon ", Spacebars.mustache(view.lookup("class")) ];                        // 16
+      },                                                                                               // 17
+      style: function() {                                                                              // 18
+        return [ "background-image: url('", Spacebars.mustache(view.lookup("identicon"), view.lookup("identity"), Spacebars.kw({
+          size: 8,                                                                                     // 20
+          scale: 8,                                                                                    // 21
+          bgcolor: "#424343"                                                                           // 22
+        })), "')" ];                                                                                   // 23
+      }                                                                                                // 24
+    }), "\n    " ];                                                                                    // 25
+  });                                                                                                  // 26
+}));                                                                                                   // 27
+                                                                                                       // 28
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}).call(this);
+
+
+
+
+
+
+(function () {
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                     //
+// packages/ethereum:elements/identicon.js                                                             //
+//                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                       //
+/**                                                                                                    // 1
+Template Controllers                                                                                   // 2
+                                                                                                       // 3
+@module Templates                                                                                      // 4
+*/                                                                                                     // 5
+                                                                                                       // 6
+/**                                                                                                    // 7
+Return the user identity icon                                                                          // 8
+                                                                                                       // 9
+@class [template] dapp_identicon                                                                       // 10
+@constructor                                                                                           // 11
+*/                                                                                                     // 12
+                                                                                                       // 13
+                                                                                                       // 14
+Template['dapp_identicon'].helpers({                                                                   // 15
+    /**                                                                                                // 16
+    The current users identity                                                                         // 17
+                                                                                                       // 18
+    @method identity                                                                                   // 19
+    */                                                                                                 // 20
+    // 'identity': function(e){                                                                        // 21
+    //     return this.identity || 'hj'; // hj creates a nice icon with person                         // 22
+    // }                                                                                               // 23
+});                                                                                                    // 24
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}).call(this);
+
+
+
+
+
+
+(function () {
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                     //
+// packages/ethereum:elements/template.addressInput.js                                                 //
+//                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                       //
+                                                                                                       // 1
+Template.__checkName("dapp_addressInput");                                                             // 2
+Template["dapp_addressInput"] = new Template("Template.dapp_addressInput", (function() {               // 3
+  var view = this;                                                                                     // 4
+  return HTML.DIV({                                                                                    // 5
+    "class": "dapp-address-input"                                                                      // 6
+  }, "\n        ", HTML.INPUT({                                                                        // 7
+    type: "text",                                                                                      // 8
+    name: "to",                                                                                        // 9
+    placeholder: function() {                                                                          // 10
+      return Spacebars.mustache(view.lookup("placeholder"));                                           // 11
+    },                                                                                                 // 12
+    "class": function() {                                                                              // 13
+      return [ Spacebars.mustache(view.lookup("class")), " ", Blaze.Unless(function() {                // 14
+        return Spacebars.call(view.lookup("isValid"));                                                 // 15
+      }, function() {                                                                                  // 16
+        return "dapp-error";                                                                           // 17
+      }) ];                                                                                            // 18
+    },                                                                                                 // 19
+    autofocus: "true",                                                                                 // 20
+    value: function() {                                                                                // 21
+      return Spacebars.mustache(view.lookup("value"));                                                 // 22
+    }                                                                                                  // 23
+  }), "\n        ", Blaze.If(function() {                                                              // 24
+    return Spacebars.call(view.lookup("isValid"));                                                     // 25
+  }, function() {                                                                                      // 26
+    return [ "\n            ", Blaze._TemplateWith(function() {                                        // 27
+      return {                                                                                         // 28
+        identity: Spacebars.call(view.lookup("address")),                                              // 29
+        "class": Spacebars.call("dapp-small")                                                          // 30
+      };                                                                                               // 31
+    }, function() {                                                                                    // 32
+      return Spacebars.include(view.lookupTemplate("dapp_identicon"));                                 // 33
+    }), "\n        " ];                                                                                // 34
+  }, function() {                                                                                      // 35
+    return [ "\n            ", HTML.I({                                                                // 36
+      "class": "icon-shield"                                                                           // 37
+    }), "\n        " ];                                                                                // 38
+  }), "\n    ");                                                                                       // 39
+}));                                                                                                   // 40
+                                                                                                       // 41
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}).call(this);
+
+
+
+
+
+
+(function () {
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                     //
+// packages/ethereum:elements/addressInput.js                                                          //
+//                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                       //
+/**                                                                                                    // 1
+Template Controllers                                                                                   // 2
+                                                                                                       // 3
+@module Templates                                                                                      // 4
+*/                                                                                                     // 5
+                                                                                                       // 6
+/**                                                                                                    // 7
+The address input template, containg the identicon.                                                    // 8
+                                                                                                       // 9
+@class [template] dapp_addressInput                                                                    // 10
+@constructor                                                                                           // 11
+*/                                                                                                     // 12
+                                                                                                       // 13
+Template['dapp_addressInput'].created = function(){                                                    // 14
+                                                                                                       // 15
+    // default set to true, to show no error                                                           // 16
+    TemplateVar.set('isValid', true);                                                                  // 17
+                                                                                                       // 18
+    if(this.data.value)                                                                                // 19
+        TemplateVar.set('address', this.data.value);                                                   // 20
+};                                                                                                     // 21
+                                                                                                       // 22
+Template['dapp_addressInput'].helpers({                                                                // 23
+    /**                                                                                                // 24
+    Return the to address                                                                              // 25
+                                                                                                       // 26
+    @method (address)                                                                                  // 27
+    */                                                                                                 // 28
+    'address': function(){                                                                             // 29
+        var address = TemplateVar.get('address');                                                      // 30
+        return (_.isString(address)) ? address.replace('0x','') : '';                                  // 31
+    },                                                                                                 // 32
+    /**                                                                                                // 33
+    Return the to address                                                                              // 34
+                                                                                                       // 35
+    @method (isValid)                                                                                  // 36
+    */                                                                                                 // 37
+    'isValid': function(){                                                                             // 38
+        return TemplateVar.get('isValid');                                                             // 39
+    }                                                                                                  // 40
+});                                                                                                    // 41
+                                                                                                       // 42
+                                                                                                       // 43
+Template['dapp_addressInput'].events({                                                                 // 44
+    /**                                                                                                // 45
+    Set the to address while typing                                                                    // 46
+                                                                                                       // 47
+    @event input input[name="to"], change input[name="to"]                                             // 48
+    */                                                                                                 // 49
+    'input input[name="to"], change input[name="to"]': function(e){                                    // 50
+        if(EthTools.isAddress(e.currentTarget.value) || _.isEmpty(e.currentTarget.value))              // 51
+            TemplateVar.set('isValid', true);                                                          // 52
+        else                                                                                           // 53
+            TemplateVar.set('isValid', false);                                                         // 54
+        TemplateVar.set('address', e.currentTarget.value);                                             // 55
+    },                                                                                                 // 56
+    /**                                                                                                // 57
+    Prevent the identicon from beeing clicked.                                                         // 58
+                                                                                                       // 59
+    TODO: remove?                                                                                      // 60
+                                                                                                       // 61
+    @event click a                                                                                     // 62
+    */                                                                                                 // 63
+    'click a': function(e){                                                                            // 64
+        e.preventDefault();                                                                            // 65
+    }                                                                                                  // 66
+});                                                                                                    // 67
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}).call(this);
+
+
+
+
+
+
+(function () {
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                     //
+// packages/ethereum:elements/template.modal.js                                                        //
+//                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                       //
+                                                                                                       // 1
+Template.__checkName("dapp_modal");                                                                    // 2
+Template["dapp_modal"] = new Template("Template.dapp_modal", (function() {                             // 3
+  var view = this;                                                                                     // 4
+  return Spacebars.include(view.lookupTemplate("Animate"), function() {                                // 5
+    return [ "\n        ", HTML.DIV({                                                                  // 6
+      "class": "dapp-modal-overlay animate"                                                            // 7
+    }, "\n            ", HTML.SECTION({                                                                // 8
+      "class": "dapp-modal-container"                                                                  // 9
+    }, "\n                ", Blaze.If(function() {                                                     // 10
+      return Spacebars.call(view.lookup("yield"));                                                     // 11
+    }, function() {                                                                                    // 12
+      return [ "\n                    ", Blaze._TemplateWith(function() {                              // 13
+        return {                                                                                       // 14
+          region: Spacebars.call("modalContent")                                                       // 15
+        };                                                                                             // 16
+      }, function() {                                                                                  // 17
+        return Spacebars.include(view.lookupTemplate("yield"));                                        // 18
+      }), "\n                " ];                                                                      // 19
+    }), "\n            "), "\n        "), "\n    " ];                                                  // 20
+  });                                                                                                  // 21
+}));                                                                                                   // 22
+                                                                                                       // 23
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}).call(this);
+
+
+
+
+
+
+(function () {
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                     //
+// packages/ethereum:elements/modal.js                                                                 //
+//                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                       //
+/**                                                                                                    // 1
+Template Controllers                                                                                   // 2
+                                                                                                       // 3
+@module Templates                                                                                      // 4
+*/                                                                                                     // 5
+                                                                                                       // 6
+/**                                                                                                    // 7
+The modal wrapper template.                                                                            // 8
+If you pass "closePath" in the data context, it will use this path, when the modal overlay is clicked. // 9
+                                                                                                       // 10
+                                                                                                       // 11
+@class [template] dapp_modal                                                                           // 12
+@constructor                                                                                           // 13
+*/                                                                                                     // 14
+                                                                                                       // 15
+                                                                                                       // 16
+/**                                                                                                    // 17
+Look the scrolling of the body                                                                         // 18
+                                                                                                       // 19
+@method rendered                                                                                       // 20
+*/                                                                                                     // 21
+Template['dapp_modal'].created = function(){                                                           // 22
+    $('body').addClass('disable-scroll blur');                                                         // 23
+};                                                                                                     // 24
+                                                                                                       // 25
+                                                                                                       // 26
+/**                                                                                                    // 27
+Remove look of scrolling from the body                                                                 // 28
+                                                                                                       // 29
+@method rendered                                                                                       // 30
+*/                                                                                                     // 31
+Template['dapp_modal'].destroyed = function(){                                                         // 32
+    $('body').removeClass('disable-scroll blur');                                                      // 33
+};                                                                                                     // 34
+                                                                                                       // 35
+                                                                                                       // 36
+                                                                                                       // 37
+Template['dapp_modal'].events({                                                                        // 38
+    /**                                                                                                // 39
+    Hide the modal on click. If the data context has the property "closePath",                         // 40
+    it will route to this one instead of going back in the browser history.                            // 41
+                                                                                                       // 42
+    @event click .dapp-modal-overlay                                                                   // 43
+    */                                                                                                 // 44
+    'click .dapp-modal-overlay': function(e){                                                          // 45
+        // hide the modal                                                                              // 46
+        if($(e.target).hasClass('dapp-modal-overlay')) {                                               // 47
+                                                                                                       // 48
+            if(typeof Router !== 'undefined') {                                                        // 49
+                                                                                                       // 50
+                if(this.closePath)                                                                     // 51
+                    Router.go(this.closePath);                                                         // 52
+                else                                                                                   // 53
+                    Router.current().render(null, {to: 'modal'});                                      // 54
+            }                                                                                          // 55
+        }                                                                                              // 56
+    }                                                                                                  // 57
+});                                                                                                    // 58
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}).call(this);
+
+
+
+
+
+
+(function () {
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                     //
+// packages/ethereum:elements/template.modalQuestion.js                                                //
+//                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                       //
+                                                                                                       // 1
+Template.__checkName("dapp_modal_question");                                                           // 2
+Template["dapp_modal_question"] = new Template("Template.dapp_modal_question", (function() {           // 3
+  var view = this;                                                                                     // 4
+  return [ HTML.P(Blaze.View(function() {                                                              // 5
+    return Spacebars.mustache(view.lookup("text"));                                                    // 6
+  })), "\n    ", HTML.DIV({                                                                            // 7
+    "class": "dapp-modal-buttons"                                                                      // 8
+  }, "\n        ", Blaze.If(function() {                                                               // 9
+    return Spacebars.call(view.lookup("hasCancel"));                                                   // 10
+  }, function() {                                                                                      // 11
+    return [ "\n            ", HTML.BUTTON({                                                           // 12
+      "class": "cancel"                                                                                // 13
+    }, Blaze.View(function() {                                                                         // 14
+      return Spacebars.mustache(view.lookup("i18nText"), "cancel");                                    // 15
+    })), "\n        " ];                                                                               // 16
+  }), "\n        ", Blaze.If(function() {                                                              // 17
+    return Spacebars.call(view.lookup("hasOk"));                                                       // 18
+  }, function() {                                                                                      // 19
+    return [ "\n            ", HTML.BUTTON({                                                           // 20
+      "class": "ok dapp-primary-button"                                                                // 21
+    }, Blaze.View(function() {                                                                         // 22
+      return Spacebars.mustache(view.lookup("i18nText"), "ok");                                        // 23
+    })), "\n        " ];                                                                               // 24
+  }), "\n    ") ];                                                                                     // 25
+}));                                                                                                   // 26
+                                                                                                       // 27
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}).call(this);
+
+
+
+
+
+
+(function () {
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                     //
+// packages/ethereum:elements/modalQuestion.js                                                         //
+//                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                       //
+/**                                                                                                    // 1
+Template Controllers                                                                                   // 2
+                                                                                                       // 3
+@module Templates                                                                                      // 4
+*/                                                                                                     // 5
+                                                                                                       // 6
+/**                                                                                                    // 7
+The modal question template. It can receive an ok and cancel function,                                 // 8
+which will be execited if the ok or cancel button is pressed.                                          // 9
+                                                                                                       // 10
+After any of the buttons is pressed the modal, will disappear.                                         // 11
+                                                                                                       // 12
+The data context for this modal should look as follows:                                                // 13
+                                                                                                       // 14
+    {                                                                                                  // 15
+        text: 'Do you really want to do this?',                                                        // 16
+        ok: function(){                                                                                // 17
+            // do something on ok                                                                      // 18
+        },                                                                                             // 19
+        cancel: function(){                                                                            // 20
+            // do something on cancel                                                                  // 21
+        }                                                                                              // 22
+    }                                                                                                  // 23
+                                                                                                       // 24
+@class [template] dapp_modal_question                                                                  // 25
+@constructor                                                                                           // 26
+*/                                                                                                     // 27
+                                                                                                       // 28
+Template['dapp_modal_question'].helpers({                                                              // 29
+    /**                                                                                                // 30
+    Check if the `ok` property is present, without executing it yet.                                   // 31
+                                                                                                       // 32
+    @method (hasOk)                                                                                    // 33
+    */                                                                                                 // 34
+    'hasOk': function(){                                                                               // 35
+        return (this.ok);                                                                              // 36
+    },                                                                                                 // 37
+    /**                                                                                                // 38
+    Check if the `cancel` property is present, without executing it yet.                               // 39
+                                                                                                       // 40
+    @method (hasCancel)                                                                                // 41
+    */                                                                                                 // 42
+    'hasCancel': function(){                                                                           // 43
+        return (this.cancel);                                                                          // 44
+    },                                                                                                 // 45
+    /**                                                                                                // 46
+    Get the correct text, if TAPi18n is available.                                                     // 47
+                                                                                                       // 48
+    @method i18nText                                                                                   // 49
+    */                                                                                                 // 50
+    'i18nText': function(key){                                                                         // 51
+        if(typeof TAPi18n === 'undefined') {                                                           // 52
+            return (key === 'ok') ? 'OK' : 'Cancel';                                                   // 53
+        } else {                                                                                       // 54
+            return TAPi18n.__('buttons.'+ key);                                                        // 55
+        }                                                                                              // 56
+    }                                                                                                  // 57
+});                                                                                                    // 58
+                                                                                                       // 59
+                                                                                                       // 60
+Template['dapp_modal_question'].events({                                                               // 61
+    /**                                                                                                // 62
+    When the confirm button is clicked, execute the given ok() function.                               // 63
+                                                                                                       // 64
+    @event click  button.ok                                                                            // 65
+    */                                                                                                 // 66
+    'click button.ok': function(e){                                                                    // 67
+        if(_.isFunction(this.ok))                                                                      // 68
+            this.ok();                                                                                 // 69
+                                                                                                       // 70
+        // hide the modal                                                                              // 71
+        Router.current().render(null, {to: 'modal'});                                                  // 72
+    },                                                                                                 // 73
+    /**                                                                                                // 74
+    When the confirm button is clicked, execute the given cancel() function.                           // 75
+                                                                                                       // 76
+    @event click  button.cancel                                                                        // 77
+    */                                                                                                 // 78
+    'click button.cancel': function(e){                                                                // 79
+        if(_.isFunction(this.cancel))                                                                  // 80
+            this.cancel();                                                                             // 81
+                                                                                                       // 82
+        // hide the modal                                                                              // 83
+        Router.current().render(null, {to: 'modal'});                                                  // 84
+    }                                                                                                  // 85
+});                                                                                                    // 86
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}).call(this);
+
+
+/* Exports */
+if (typeof Package === 'undefined') Package = {};
+Package['ethereum:elements'] = {};
+
+})();

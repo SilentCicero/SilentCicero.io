@@ -1,0 +1,16 @@
+(function(){
+Template.__checkName("components_settings");
+Template["components_settings"] = new Template("Template.components_settings", (function() {
+  var view = this;
+  return HTML.DIV({
+    "class": "panel panel-default panel-dapp"
+  }, "\n        ", HTML.DIV({
+    "class": "panel-body"
+  }, "rpc provider: ", HTML.Raw("<strong>http://localhost:8080</strong>"), " ", HTML.Raw("<br>"), " ", HTML.SMALL({
+    "class": "text-muted"
+  }, Blaze.View("lookup:i18n", function() {
+    return Spacebars.makeRaw(Spacebars.mustache(view.lookup("i18n"), "dapp.app.copyright"));
+  }))), "\n    ");
+}));
+
+})();

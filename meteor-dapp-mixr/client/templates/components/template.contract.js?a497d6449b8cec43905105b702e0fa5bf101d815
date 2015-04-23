@@ -1,0 +1,79 @@
+(function(){
+Template.__checkName("components_contract");
+Template["components_contract"] = new Template("Template.components_contract", (function() {
+  var view = this;
+  return HTML.DIV({
+    "class": "panel panel-default panel-dapp panel-contract"
+  }, "\n        ", HTML.DIV({
+    "class": "panel-body"
+  }, "\n            ", Blaze.If(function() {
+    return Spacebars.dataMustache(Spacebars.dot(view.lookup("$"), "Session", "equals"), "contractName", "");
+  }, function() {
+    return null;
+  }, function() {
+    return [ "\n                ", HTML.H4(Blaze.View("lookup:$.Session.get", function() {
+      return Spacebars.mustache(Spacebars.dot(view.lookup("$"), "Session", "get"), "contractName");
+    }), "\n"), "\n            " ];
+  }), "          \n            ", HTML.INPUT({
+    type: "text",
+    "class": "form-control",
+    onfocus: "this.select();",
+    onmouseup: "return false;",
+    value: function() {
+      return Spacebars.mustache(Spacebars.dot(view.lookup("$"), "Session", "get"), "contractAddress");
+    },
+    placeholder: "address",
+    style: "width: 49%; float: left; margin-right: 2%;",
+    title: "contract address"
+  }), "      \n            ", HTML.INPUT({
+    type: "text",
+    "class": "form-control",
+    onfocus: "this.select();",
+    onmouseup: "return false;",
+    value: function() {
+      return Spacebars.mustache(Spacebars.dot(view.lookup("$"), "Session", "get"), "hex");
+    },
+    placeholder: "bytecode",
+    style: "width: 49%; float: left; ",
+    title: "contract bytecode"
+  }), "\n            ", HTML.TEXTAREA({
+    "class": "form-control",
+    onfocus: "this.select();",
+    onmouseup: "return false;",
+    style: "height: 45px;",
+    placeholder: "JSON ABI",
+    title: "contract JSON interface",
+    value: function() {
+      return Spacebars.mustache(Spacebars.dot(view.lookup("$"), "Session", "get"), "abi");
+    }
+  }), "     \n            ", HTML.INPUT({
+    type: "text",
+    "class": "form-control",
+    onfocus: "this.select();",
+    onmouseup: "return false;",
+    value: function() {
+      return Spacebars.mustache(Spacebars.dot(view.lookup("$"), "Session", "get"), "contractInterface");
+    },
+    placeholder: "solidity interface",
+    title: "contract solidity interface"
+  }), "\n            ", Blaze.If(function() {
+    return Spacebars.dataMustache(Spacebars.dot(view.lookup("$"), "Session", "equals"), "contractAddress", "");
+  }, function() {
+    return "\n            ";
+  }, function() {
+    return [ "\n            balance: ", HTML.STRONG(Blaze.View("lookup:$.Session.get", function() {
+      return Spacebars.mustache(Spacebars.dot(view.lookup("$"), "Session", "get"), "contractBalance");
+    })), "  ethers\n            " ];
+  }), "\n            ", HTML.STRONG({
+    style: "margin-left: 10px;"
+  }, Blaze.View("lookup:$.Session.get", function() {
+    return Spacebars.mustache(Spacebars.dot(view.lookup("$"), "Session", "get"), "contractBytes");
+  })), " bytes  \n            ", HTML.Raw('<small class=" text-muted" data-toggle="collapse" data-target="#output" style="float: right; margin-top: 3px; cursor: pointer;">output</small>'), "\n        "), "\n        ", HTML.PRE({
+    id: "output",
+    "class": "panel-body collapse in"
+  }, Blaze.View("lookup:$.Session.get", function() {
+    return Spacebars.mustache(Spacebars.dot(view.lookup("$"), "Session", "get"), "output");
+  })), "\n    ");
+}));
+
+})();

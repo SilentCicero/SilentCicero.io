@@ -1,0 +1,72 @@
+(function(){
+Template.__checkName("components_diagnostics");
+Template["components_diagnostics"] = new Template("Template.components_diagnostics", (function() {
+  var view = this;
+  return HTML.DIV({
+    "class": "panel panel-default panel-dapp panel-health panel-diagnostics"
+  }, "\n        ", HTML.TABLE({
+    "class": "panel-body table"
+  }, "\n                ", HTML.TR(HTML.TD({
+    "class": "heading"
+  }, Blaze.View("lookup:i18n", function() {
+    return Spacebars.mustache(view.lookup("i18n"), "dapp.app.headers.balance");
+  })), HTML.TD(Blaze.View("lookup:balance", function() {
+    return Spacebars.mustache(view.lookup("balance"));
+  })), "\n                ", HTML.TD({
+    "class": "heading"
+  }, Blaze.View("lookup:i18n", function() {
+    return Spacebars.mustache(view.lookup("i18n"), "dapp.app.headers.coinbase");
+  })), HTML.TD(Blaze.View("lookup:coinbase", function() {
+    return Spacebars.mustache(view.lookup("coinbase"));
+  }), ".."), "\n                ", HTML.TD({
+    "class": "heading"
+  }, Blaze.View("lookup:i18n", function() {
+    return Spacebars.mustache(view.lookup("i18n"), "dapp.app.headers.listening");
+  })), HTML.TD(Blaze.View("lookup:listening", function() {
+    return Spacebars.mustache(view.lookup("listening"));
+  })), "\n                ", HTML.TD({
+    "class": "heading"
+  }, Blaze.View("lookup:i18n", function() {
+    return Spacebars.mustache(view.lookup("i18n"), "dapp.app.headers.peerCount");
+  })), HTML.TD(Blaze.View("lookup:peerCount", function() {
+    return Spacebars.mustache(view.lookup("peerCount"));
+  })), "\n                ", HTML.TD({
+    "class": "heading"
+  }, Blaze.View("lookup:i18n", function() {
+    return Spacebars.mustache(view.lookup("i18n"), "dapp.app.headers.accountCount");
+  })), HTML.TD(Blaze.View("lookup:accountCount", function() {
+    return Spacebars.mustache(view.lookup("accountCount"));
+  })), "\n                ", HTML.TD({
+    "class": "heading"
+  }, Blaze.View("lookup:i18n", function() {
+    return Spacebars.mustache(view.lookup("i18n"), "dapp.app.headers.gasPrice");
+  })), HTML.TD(Blaze.View("lookup:gasPrice", function() {
+    return Spacebars.mustache(view.lookup("gasPrice"));
+  })), "\n                ", HTML.TD({
+    "class": "heading"
+  }, Blaze.View("lookup:i18n", function() {
+    return Spacebars.mustache(view.lookup("i18n"), "dapp.app.headers.version");
+  })), HTML.TD(Blaze.View("lookup:version", function() {
+    return Spacebars.mustache(view.lookup("version"));
+  })), "\n                ", HTML.TD({
+    "class": "heading"
+  }, Blaze.View("lookup:i18n", function() {
+    return Spacebars.mustache(view.lookup("i18n"), "dapp.app.headers.client");
+  })), HTML.TD(Blaze.View("lookup:client", function() {
+    return Spacebars.mustache(view.lookup("client"));
+  })), "\n                ", HTML.TD({
+    "class": "heading"
+  }, Blaze.View("lookup:i18n", function() {
+    return Spacebars.mustache(view.lookup("i18n"), "dapp.app.headers.blockNumber");
+  })), HTML.TD(Blaze.View("lookup:blockNumber", function() {
+    return Spacebars.mustache(view.lookup("blockNumber"));
+  })), "\n                ", HTML.TD({
+    "class": "heading"
+  }, Blaze.View("lookup:i18n", function() {
+    return Spacebars.mustache(view.lookup("i18n"), "dapp.app.headers.mining");
+  })), HTML.TD(Blaze.View("lookup:mining", function() {
+    return Spacebars.mustache(view.lookup("mining"));
+  }))), "		\n        "), "\n    ");
+}));
+
+})();

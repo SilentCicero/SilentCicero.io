@@ -1,0 +1,22 @@
+(function(){
+Template.__checkName("layout_footer");
+Template["layout_footer"] = new Template("Template.layout_footer", (function() {
+  var view = this;
+  return HTML.FOOTER({
+    "class": "footernav"
+  }, "\n            ", HTML.UL({
+    "class": "list-inline"
+  }, "\n                ", HTML.Raw('<li class="footer-menu-divider">⋅</li>'), "\n                ", HTML.LI("\n                    ", HTML.A({
+    href: function() {
+      return Spacebars.mustache(view.lookup("pathFor"), "view2");
+    }
+  }, Blaze.View("lookup:i18n", function() {
+    return Spacebars.makeRaw(Spacebars.mustache(view.lookup("i18n"), "dapp.app.buttons.editor"));
+  })), "\n                "), "\n            "), "\n            ", HTML.P({
+    "class": "copyright text-muted small"
+  }, Blaze.View("lookup:i18n", function() {
+    return Spacebars.makeRaw(Spacebars.mustache(view.lookup("i18n"), "dapp.app.copyright"));
+  })), "\n    ");
+}));
+
+})();

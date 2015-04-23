@@ -1,0 +1,80 @@
+//////////////////////////////////////////////////////////////////////////
+//                                                                      //
+// This is a generated file. You can view the original                  //
+// source in your browser if your browser supports source maps.         //
+//                                                                      //
+// If you are using Chrome, open the Developer Tools and click the gear //
+// icon in its lower right corner. In the General Settings panel, turn  //
+// on 'Enable source maps'.                                             //
+//                                                                      //
+// If you are using Firefox 23, go to `about:config` and set the        //
+// `devtools.debugger.source-maps-enabled` preference to true.          //
+// (The preference should be on by default in Firefox 24; versions      //
+// older than 23 do not support source maps.)                           //
+//                                                                      //
+//////////////////////////////////////////////////////////////////////////
+
+
+(function () {
+
+/* Imports */
+var Meteor = Package.meteor.Meteor;
+var Tracker = Package.tracker.Tracker;
+var Deps = Package.tracker.Deps;
+var _ = Package.underscore._;
+
+/* Package-scope variables */
+var ReactiveTimer;
+
+(function () {
+
+///////////////////////////////////////////////////////////////////////
+//                                                                   //
+// packages/frozeman:reactive-timer/ReactiveTimer.js                 //
+//                                                                   //
+///////////////////////////////////////////////////////////////////////
+                                                                     //
+ReactiveTimer = (function () {                                       // 1
+                                                                     // 2
+    // Constructor                                                   // 3
+    function ReactiveTimer(interval) {                               // 4
+    	this._dependency = new Tracker.Dependency;                      // 5
+    	this._intervalId = null;                                        // 6
+                                                                     // 7
+        if(_.isFinite(interval))                                     // 8
+            this.start(interval);                                    // 9
+                                                                     // 10
+    };                                                               // 11
+                                                                     // 12
+    ReactiveTimer.prototype.start = function(interval){              // 13
+    	var _this = this;                                               // 14
+                                                                     // 15
+    	this._intervalId = Meteor.setInterval(function(){               // 16
+            // rerun every "interval"                                // 17
+            _this._dependency.changed();                             // 18
+        }, 1000 * interval);                                         // 19
+    };                                                               // 20
+                                                                     // 21
+    ReactiveTimer.prototype.stop = function(){                       // 22
+        Meteor.clearInterval(this._intervalId);                      // 23
+        this._intervalId = null;                                     // 24
+    };                                                               // 25
+                                                                     // 26
+    ReactiveTimer.prototype.tick = function(){                       // 27
+        this._dependency.depend();                                   // 28
+    };                                                               // 29
+                                                                     // 30
+    return ReactiveTimer;                                            // 31
+})();                                                                // 32
+///////////////////////////////////////////////////////////////////////
+
+}).call(this);
+
+
+/* Exports */
+if (typeof Package === 'undefined') Package = {};
+Package['frozeman:reactive-timer'] = {
+  ReactiveTimer: ReactiveTimer
+};
+
+})();
