@@ -1,5 +1,3 @@
-<% set('username', 'Big Joe') %>
-
 # Test Home Page
 
 This is some test text.
