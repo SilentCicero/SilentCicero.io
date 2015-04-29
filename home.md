@@ -11,3 +11,5 @@ This is some test text.
 ### Test Small Headers
 
 `text in this format`
+
+author: <% get('username') %>
