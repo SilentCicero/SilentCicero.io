@@ -1,5 +1,7 @@
 <% set('username', 'Big Joe') %>
 
+<% web3.eth.gasPrice %>
+
 # Test Home Page
 
 This is some test text.
