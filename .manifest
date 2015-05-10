@@ -1,4 +1,5 @@
 .manifest
+.manifest~
 AkashaDNS.sol
 AkashaVerified.sol
 Latest/A Fourth Story.md
@@ -22,13 +23,16 @@ _public/img/contact-bg.jpg
 _public/img/home-bg.jpg
 _public/img/post-bg.jpg
 _public/img/post-sample-image.jpg
-_public/index.html
 _public/index.html~
 _public/templates/components/landingFooter.html
+_public/templates/components/landingFooter.html~
 _public/templates/components/landingHeader.html
 _public/templates/layout/footer.html
 _public/templates/layout/header.html
 _public/templates/layout/main.html
+_public/templates/layout/main.html~
 _public/templates/views/News.html
-_public/templates/views/landing.html
+_public/templates/views/News.html~
+_public/templates/views/index.html
+_public/templates/views/landing.html~
 index.md
