@@ -1,7 +1,5 @@
 .manifest
 About.md
-AkashaDNS.sol
-AkashaVerified.sol
 Contact.md
 Latest/A Fourth Story.md
 Latest/A New Blog Post.md
@@ -38,6 +36,5 @@ _public/templates/views/Contact.html
 _public/templates/views/Latest.html
 _public/templates/views/News.html
 _public/templates/views/Post.html
-_public/templates/views/Post.html~
 _public/templates/views/index.html
 index.md
