@@ -1,11 +1,8 @@
 .manifest
-.manifest~
 About.md
-About.md~
 AkashaDNS.sol
 AkashaVerified.sol
 Contact.md
-Contact.md~
 Latest/A Fourth Story.md
 Latest/A New Blog Post.md
 Latest/Another Blog Post.md
@@ -27,7 +24,6 @@ _public/img/contact-bg.jpg
 _public/img/home-bg.jpg
 _public/img/post-bg.jpg
 _public/img/post-sample-image.jpg
-_public/index.html~
 _public/templates/components/contactForm.html
 _public/templates/components/contactForm.html~
 _public/templates/components/landingFooter.html
@@ -37,20 +33,11 @@ _public/templates/components/landingHeader.html~
 _public/templates/layout/footer.html
 _public/templates/layout/header.html
 _public/templates/layout/main.html
-_public/templates/layout/main.html~
 _public/templates/views/About.html
-_public/templates/views/About.html~
 _public/templates/views/Contact.html
-_public/templates/views/Contact.html~
 _public/templates/views/Latest.html
 _public/templates/views/News.html
-_public/templates/views/News.html~
 _public/templates/views/Post.html
 _public/templates/views/Post.html~
-_public/templates/views/about.html
-_public/templates/views/about.html~
-_public/templates/views/contact.html~
 _public/templates/views/index.html
-_public/templates/views/landing.html~
-_public/templates/views/post.html~
 index.md
