@@ -11,11 +11,3 @@ Author1 :: {"name": "Nick Dodson", "website": "nickdodson.com"}
 Posted :: 2015-4-2
 
 %%
-
-## This is the main index.md file's header!
-
-some text
-
-### A Small MarkDown Header
-
-
