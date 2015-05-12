@@ -1,20 +1,20 @@
 <!-- Page Header -->
 <!-- Set your background image for this header on the line below. -->
-{{#with __yeild.md.__meta}}
-	<header class="intro-header" style="background-image: url('{{__cssUrlBase}}_public/img/home-bg.jpg')">
+<header class="intro-header" style="background-image: url('{{__cssUrlBase}}_public/img/home-bg.jpg')">
+	{{#with __yeild.md.__meta}}
 		<div class="container">
 			<div class="row">
-			    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-			        <div class="post-heading">
-			            <h1>{{Title}}</h1>
-			            <h2 class="subheading">{{SubTitle}}</h2>
-			            <span class="meta">Posted by <a href="{{Author.website}}">{{Author.name}}</a> on {{#format posted}}{{/format}}</span>
-			        </div>
-			    </div>
+				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				    <div class="post-heading">
+				        <h1>{{Title}}</h1>
+				        <h2 class="subheading">{{SubTitle}}</h2>
+				        <span class="meta">Posted by <a href="{{Author.website}}">{{Author.name}}</a> on {{#format posted}}{{/format}}</span>
+				    </div>
+				</div>
 			</div>
 		</div>
-	</header>
-{{/with}}
+	{{/with}}
+</header>
 
 <!-- Post Content -->
 <article>
