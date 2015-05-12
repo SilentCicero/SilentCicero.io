@@ -6,6 +6,8 @@ Author :: Author1
 
 Posted :: 2015-4-5
 
+Image :: http://netdna.webdesignerdepot.com/uploads/2013/11/picjumbo.com_IMG_3130.jpg
+
 Template :: Post
 
 %%
