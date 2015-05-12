@@ -2,19 +2,12 @@
 About.md
 Contact.md
 Latest/A Fourth Story.md
-Latest/A Fourth Story.md~
 Latest/A New Blog Post.md
-Latest/A New Blog Post.md~
 Latest/Another Blog Post.md
-Latest/Another Blog Post.md~
 Latest/Something Else Altogether.md
-Latest/Something Else Altogether.md~
 News/index.md
-News/index.md~
 News/story_1.md
-News/story_1.md~
 News/story_2.md
-News/story_2.md~
 _public/css/bootstrap.css
 _public/css/bootstrap.min.css
 _public/css/clean-blog.css
@@ -30,11 +23,8 @@ _public/img/home-bg.jpg
 _public/img/post-bg.jpg
 _public/img/post-sample-image.jpg
 _public/templates/components/contactForm.html
-_public/templates/components/contactForm.html~
 _public/templates/components/landingFooter.html
-_public/templates/components/landingFooter.html~
 _public/templates/components/landingHeader.html
-_public/templates/components/landingHeader.html~
 _public/templates/layout/footer.html
 _public/templates/layout/header.html
 _public/templates/layout/main.html
@@ -42,7 +32,6 @@ _public/templates/views/About.html
 _public/templates/views/Contact.html
 _public/templates/views/Latest.html
 _public/templates/views/News.html
-_public/templates/views/News.html~
 _public/templates/views/Post.html
 _public/templates/views/index.html
 index.md
