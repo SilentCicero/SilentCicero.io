@@ -6,8 +6,16 @@ SubHeader :: A Blog About Everything and Nothing
 
 Headers :: ["Clean Blog", "A Clean Blog Theme by Start Bootstrap"]
 
-Author1 :: {"name": "Nick Dodson", "website": "nickdodson.com"}
+Author1 :: {"name": "Nick Dodson", "website": "http://nickdodson.com"}
+
+Author2 :: {"name": "Mihai Alisie", "website": "https://twitter.com/mihaialisie"}
 
 Posted :: 2015-4-2
+
+Twitter :: http://twitter.com/IAmNickDodson
+
+Facebook :: http://facebook.com/IAmNickDodson
+
+GitHub :: http://github.com/SilentCicero
 
 %%

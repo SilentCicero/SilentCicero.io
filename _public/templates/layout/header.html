@@ -16,11 +16,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
 				{{#each __pages}}
-
 					<li>
-		                <a href="{{__url}}">{{#if __isIndex}}Home{{else}}{{__nameClean}}{{/if}}</a>
+		                <a href="{{__url}}">{{#unless __isIndex}}{{__nameClean}}{{/if}}</a>
 		            </li>
-
 				{{/each}}
             </ul>
         </div>

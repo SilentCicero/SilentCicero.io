@@ -1,6 +1,6 @@
 Title :: Another Great Story
 
-Author :: Author1
+Author :: Author2
 
 Image :: http://d1vkzb1b06dpez.cloudfront.net/wp-content/uploads/free-stock-nature-photos.jpg
 
