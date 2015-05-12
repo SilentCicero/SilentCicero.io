@@ -1,12 +1,8 @@
-Title ::  Man must explore, and this is exploration at its greatest
-
-SubTitle :: Problems look mighty small from 150 miles up
+Title :: Another Great Story
 
 Author :: Author1
 
-Posted :: 2015-4-5
-
-Image :: http://netdna.webdesignerdepot.com/uploads/2013/11/picjumbo.com_IMG_3130.jpg
+Image :: http://d1vkzb1b06dpez.cloudfront.net/wp-content/uploads/free-stock-nature-photos.jpg
 
 Template :: Post
 

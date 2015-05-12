@@ -5,6 +5,4 @@ Template :: Post
 
 %%
 
-## Welcome to the News Index Page!
-
-this is another page.
+## News

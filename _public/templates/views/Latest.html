@@ -1,0 +1,49 @@
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header" style="background-image: url('{{__cssUrlBase}}_public/img/about-bg.jpg')">
+	{{#with __yeild.md.__meta}}
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				    <div class="page-heading">
+				        <h1>{{Header}}</h1>
+				        <hr class="small">
+				        <span class="subheading">{{SubHeader}}</span>
+				    </div>
+				</div>
+			</div>
+		</div>
+	{{/with}}
+</header>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            {{#each Latest.__pages}}
+                {{#load __id}}
+                <div class="post-preview">
+                    <a href="{{__url}}">
+                        <h2 class="post-title">
+                            {{__meta.Title}}
+                        </h2>
+                        <h3 class="post-subtitle">
+                            {{__meta.SubTitle}}
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posted by <a href="{{__meta.Author.website}}">{{__meta.Author.name}}</a> on {{#format __meta.Posted}}{{/format}}</p>
+                </div>
+                <hr>
+                {{/load}}
+            {{/each}}
+
+            <hr>
+            <!-- Pager -->
+            <ul class="pager">
+                <li class="next">
+                    <a href="#">Older Posts &rarr;</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

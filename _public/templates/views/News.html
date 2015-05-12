@@ -1,14 +1,14 @@
 <!-- Page Header -->
 <!-- Set your background image for this header on the line below. -->
-<header class="intro-header" style="background-image: url('{{__cssUrlBase}}_public/img/home-bg.jpg')">
+<header class="intro-header" style="background-image: url('{{__cssUrlBase}}_public/img/about-bg.jpg')">
 	{{#with __yeild.md.__meta}}
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-				    <div class="post-heading">
-				        <h1>{{Title}}</h1>
-				        <h2 class="subheading">{{SubTitle}}</h2>
-				        <span class="meta">Posted by <a href="{{Author.website}}">{{Author.name}}</a> on {{#format posted}}{{/format}}</span>
+				    <div class="page-heading">
+				        <h1>{{Header}}</h1>
+				        <hr class="small">
+				        <span class="subheading">{{SubHeader}}</span>
 				    </div>
 				</div>
 			</div>
@@ -16,13 +16,34 @@
 	{{/with}}
 </header>
 
-<!-- Post Content -->
-<article>
-	<div class="container">
-	    <div class="row">
-	        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-	            {{#markdown __yeild.md.__raw}}{{/markdown}}
-	        </div>
-	    </div>
-	</div>
-</article>
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            {{#each News.__pages}}
+                {{#load __id}}
+                <div class="post-preview">
+                    <a href="{{__url}}">
+                        <h2 class="post-title">
+                            {{__meta.Title}}
+                        </h2>
+                        <h3 class="post-subtitle">
+                            {{__meta.SubTitle}}
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posted by <a href="{{__meta.Author.website}}">{{__meta.Author.name}}</a> on {{#format __meta.Posted}}{{/format}}</p>
+                </div>
+                <hr>
+                {{/load}}
+            {{/each}}
+
+            <hr>
+            <!-- Pager -->
+            <ul class="pager">
+                <li class="next">
+                    <a href="#">Older Posts &rarr;</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
