@@ -4,6 +4,8 @@ Header :: Welcome Home
 
 Organization :: ShadowState
 
+Image :: https://raw.githubusercontent.com/SilentCicero/silentcicero.github.io/master/_public/img/home-bg.jpg
+
 SubHeader :: A Blog About Everything and Nothing
 
 Headers :: ["Clean Blog", "A Clean Blog Theme by Start Bootstrap"]
