@@ -4,6 +4,8 @@ Header :: Welcome Home
 
 Organization :: ShadowState
 
+Category :: technology
+
 Image :: https://raw.githubusercontent.com/SilentCicero/silentcicero.github.io/master/_public/img/home-bg.jpg
 
 SubHeader :: A Blog About Everything and Nothing
