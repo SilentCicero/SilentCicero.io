@@ -2,6 +2,8 @@ Title :: Nicks Blog
 
 Header :: Welcome Home
 
+Organization :: ShadowState
+
 SubHeader :: A Blog About Everything and Nothing
 
 Headers :: ["Clean Blog", "A Clean Blog Theme by Start Bootstrap"]
